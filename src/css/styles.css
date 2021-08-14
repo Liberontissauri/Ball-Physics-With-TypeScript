@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+#main_canvas {
+    height: 80.5vh;
+    width: 80%;
+}
+#main_canvas {
+    background-color: rgba(54, 52, 66, 0.198);
+}
+
+h1 {
+    color: white;
+    font-family: 'Jost', sans-serif;
+    font-size: 30pt;
+    margin-bottom: 20px;
+    text-align: center;
+}
+body {
+    width: 100%;
+    height: 99.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(28, 27, 37);
+}
