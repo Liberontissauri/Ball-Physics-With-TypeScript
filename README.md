@@ -1,6 +1,6 @@
 ![img](preview.gif)
 
-# Ball Physics Experience:volleyball:
+# Ball Physics Experiment :volleyball:
 
 This is an attempt to recreate the physics of bouncing balls:basketball: using [TypeScript](https://github.com/microsoft/TypeScript) coupled with [Victor JS](https://github.com/maxkueng/victor), a library used for vector 	:arrow_right: manipulation.<br>
 
