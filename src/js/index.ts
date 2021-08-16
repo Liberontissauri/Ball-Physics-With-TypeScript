@@ -24,11 +24,19 @@ class Screen {
             object.render();
         });
     };
+    updateSize() {
+        ctx.canvas.width  = window.innerWidth;
+        ctx.canvas.height = window.innerHeight;
+        this.height = window.innerHeight;
+        this.width = window.innerWidth;
+    }
     clear() {
         this.context.clearRect(0, 0, this.width, this.height);
     };
     startRendering() {
         setInterval(() => {
+            this.updateSize();
+
             this.clear();
             this.objects.forEach(object => {
                 object.step()
@@ -83,7 +91,7 @@ class Ball {
         this.appliedForces[force_index] = undefined;
     };
     checkCollisionFromList(object_list: Ball[]) {
-        this.isCollidingWithWall(1920, 1080)
+        this.isCollidingWithWall(this.context.canvas.width, this.context.canvas.height)
         object_list.forEach(object => {
             if(this.isCollidingWithBall(object)) {
                 this.adjustPositions(object)
@@ -150,7 +158,7 @@ class Ball {
     }
 };
 
-const myscreen = new Screen(ctx, 1920, 1080, 0);
+const myscreen = new Screen(ctx, window.innerWidth, window.innerHeight, 0);
 const myball = new Ball(ctx, 300, 200, 20, "red", 60 )
 const myball2 = new Ball(ctx, 300, 700, 20, "blue", 60 )
 const myball3 = new Ball(ctx, 600, 700, 40, "yellow", 60 )
@@ -160,10 +168,10 @@ myscreen.addObject(myball2)
 myscreen.addObject(myball3)
 
 myball.addForce(new Victor(0.05, 0.03), 1000);
-myball.addForce(new Victor(0.00, 0.098), 0);
+myball.addForce(new Victor(0.00, 0.18), 0);
 myball2.addForce(new Victor(0.03, -0.03), 1000);
-myball2.addForce(new Victor(0.00, 0.098), 0);
-myball3.addForce(new Victor(0.00, 0.098), 0);
+myball2.addForce(new Victor(0.00, 0.18), 0);
+myball3.addForce(new Victor(0.00, 0.18), 0);
 myball3.addForce(new Victor(0.06, -0.04), 1000);
 
 document.addEventListener('keypress', event => {
@@ -182,7 +190,7 @@ document.addEventListener('keypress', event => {
         let y_force_value = Math.random() / 10;
         if((Math.floor(Math.random() * (10 - 1)) % 2) == 0) y_force_value = -y_force_value;
         new_ball.addForce(new Victor(x_force_value, y_force_value), 1000);
-        new_ball.addForce(new Victor(0.00, 0.098), 0);
+        new_ball.addForce(new Victor(0.00, 0.18), 0);
         
         
     }
